@@ -1,7 +1,8 @@
-package com.jwiseinc.onedayticket
+package com.jwiseinc.onedayticket.view.activtiy
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.jwiseinc.onedayticket.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
