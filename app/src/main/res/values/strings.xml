@@ -1,3 +1,4 @@
 <resources>
-    <string name="app_name">OneDayTicket</string>
+    <string name="app_name">一日票店家</string>
+    <string name="email"></string>
 </resources>

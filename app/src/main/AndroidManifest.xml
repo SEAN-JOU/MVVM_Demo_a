@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.jwiseinc.onedayticket" >
+    package="com.jwiseinc.onedayticket">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:name=".BaseApplication"
@@ -16,18 +15,22 @@
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNo"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity
+            android:name=".view.activtiy.LoginActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activtiy.SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".view.activtiy.MainActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
             </intent-filter>
