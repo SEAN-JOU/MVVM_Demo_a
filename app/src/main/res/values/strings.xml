@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">一日票店家</string>
     <string name="email"></string>
+    <string name="forget_password">忘記密碼</string>
+    <string name="password">密碼</string>
+    <string name="auto_login">自動登入</string>
+    <string name="login">登入</string>
 </resources>

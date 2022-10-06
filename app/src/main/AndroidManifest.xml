@@ -4,6 +4,11 @@
     package="com.jwiseinc.onedayticket">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name=".BaseApplication"
@@ -16,6 +21,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppThemeNo"
         tools:targetApi="31">
+        <activity
+            android:name=".ScannerActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activtiy.LoginActivity"
             android:exported="false" />

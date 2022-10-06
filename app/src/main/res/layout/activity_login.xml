@@ -81,7 +81,7 @@ tools:context=".view.activtiy.LoginActivity">
                     android:singleLine="true"
                     android:textColor="#000000"
                     android:textColorHint="@color/gray_2"
-                    android:textSize="@dimen/text_size0" />
+                    android:textSize="15dp" />
 
             </LinearLayout>
         </LinearLayout>
@@ -109,7 +109,7 @@ tools:context=".view.activtiy.LoginActivity">
                 android:scaleType="fitCenter"
                 android:textAlignment="center"
                 android:textColor="@color/gray_2"
-                android:textSize="@dimen/text_size1" />
+                android:textSize="17dp" />
 
             <EditText
                 android:id="@+id/password"
@@ -125,7 +125,7 @@ tools:context=".view.activtiy.LoginActivity">
                 android:singleLine="true"
                 android:textColor="#000000"
                 android:textColorHint="@color/gray_2"
-                android:textSize="@dimen/text_size0" />
+                android:textSize="15dp" />
 
         </LinearLayout>
 
@@ -141,7 +141,7 @@ tools:context=".view.activtiy.LoginActivity">
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:text="@string/auto_login"
-                android:textSize="@dimen/text_size1" />
+                android:textSize="17dp" />
         </LinearLayout>
 
     </LinearLayout>
@@ -166,118 +166,11 @@ tools:context=".view.activtiy.LoginActivity">
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:background="@drawable/mybutton"
             android:paddingTop="2dp"
             android:paddingBottom="2dp"
             android:text="@string/login"
-            android:textColor="@color/whiteword"
-            android:textSize="@dimen/text_size1" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/register"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/free_register"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size1" />
-
-            <TextView
-                android:id="@+id/forgetpassword"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="right"
-                android:text="@string/forget_password"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size1" />
-        </LinearLayout>
-
-        <RelativeLayout
-            android:id="@+id/google_linearlayout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/linear_stroke_gray1"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@+id/google_login"
-                android:src="@drawable/google_icon" />
-
-            <TextView
-                android:id="@+id/google_login"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/sign_in_with_google"
-                android:textColor="@color/blackword" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/fb_linearlayout"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:background="@color/fb_blue"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:visibility="gone">
-
-            <ImageView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_alignParentTop="true"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_toStartOf="@+id/fb_login"
-                android:src="@drawable/fb_icon" />
-
-            <TextView
-                android:id="@+id/fb_login"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="@string/sign_in_with_facebook"
-                android:textColor="@color/whiteword" />
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="10dp"
-            android:gravity="right"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/skip"
-                android:layout_width="100dp"
-                android:layout_height="match_parent"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:gravity="center|right"
-                android:text="@string/skip"
-                android:textColor="@color/colorPrimaryDark"
-                android:textSize="@dimen/text_size1" />
-        </LinearLayout>
-
+            android:textColor="@color/white"
+            android:textSize="17dp" />
 
     </LinearLayout>
 
@@ -292,6 +185,6 @@ tools:context=".view.activtiy.LoginActivity">
     android:gravity="bottom|center_horizontal"
     android:padding="10dp"
     android:textColor="@color/gray_2"
-    android:textSize="@dimen/text_size0" />
+    android:textSize="15dp" />
 
 </RelativeLayout>
