@@ -22,17 +22,22 @@
         android:theme="@style/AppThemeNo"
         tools:targetApi="31">
         <activity
-            android:name=".ScannerActivity"
+            android:name=".view.activtiy.ScannerActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.activtiy.LoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:exported="false" />
         <activity
             android:name=".view.activtiy.SplashActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

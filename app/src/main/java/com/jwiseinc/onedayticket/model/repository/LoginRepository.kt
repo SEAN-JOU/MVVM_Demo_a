@@ -24,15 +24,15 @@ class LoginRepository {
         })
     }
 
-    fun login(email:String,password:String,task: OnCallBack) {
+    fun login(memberID:String,password:String,task: OnCallBack) {
         val client = OkHttpClient()
         val builder = FormBody.Builder()
-        builder.add("email",  email)
+        builder.add("memberID",  memberID)
         builder.add("password",  password)
 
         val request = Request.Builder()
             .method("POST", builder.build())
-            .url(ApiManager.SERVER_USERS + "login")
+            .url(ApiManager.SERVER_USERS + "/merchant/login.php")
             .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
