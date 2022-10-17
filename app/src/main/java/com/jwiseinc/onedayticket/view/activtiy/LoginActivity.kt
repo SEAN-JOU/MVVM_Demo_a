@@ -22,6 +22,7 @@ class LoginActivity : AppCompatActivity() {
     lateinit var memberIDEdt:EditText
     lateinit var passwordEdt:EditText
     lateinit var versionTxt:TextView
+    lateinit var forgetPasswordBtn:TextView
     lateinit var rememberCheckBox:CheckBox
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
         passwordEdt = findViewById(R.id.password_edt)
         memberIDEdt = findViewById(R.id.memberID_edt)
         versionTxt = findViewById(R.id.version)
+        forgetPasswordBtn = findViewById(R.id.forget_password)
 
         versionTxt.text = "v"+ExampleUtil.getLocalVersionName(this)
         viewModel = ViewModelProvider(this, LoginViewModelFactory(LoginRepository())).get(
@@ -73,6 +75,11 @@ class LoginActivity : AppCompatActivity() {
             }else{
                 Toast.makeText(this,"輸入框不得為空",Toast.LENGTH_SHORT).show()
             }
+        }
+
+        forgetPasswordBtn.setOnClickListener{
+            val it = Intent(this, ForgetPasswordActivity::class.java)
+            startActivity(it)
         }
     }
 }

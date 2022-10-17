@@ -3,9 +3,8 @@
     <color name="orange">#FF9807</color>
     <color name="yellow">#FFC400</color>
     <color name="red">#FF4D13</color>
-    <color name="blue">#045EB7</color>
+    <color name="blue">#0060BD</color>
     <color name="gray">#7691AC</color>
-    <color name="light_blue">#018EFD</color>
     <color name="login_backgroudcolor">#018EFD</color>
 
 
@@ -16,10 +15,4 @@
     <color name="gray_2">#7E7E7F</color>
     <color name="gray_3">#404040</color>
 
-    <color name="blue_0">#DAE4F0</color>
-    <color name="blue_1">#B6C9DF</color>
-    <color name="blue_2">#22A5DE</color>
-    <color name="blue_3">#4C7AB2</color>
-    <color name="blue_4">#1F4678</color>
-    <color name="blue_5">#0E243E</color>
 </resources>
