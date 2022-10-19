@@ -29,6 +29,7 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
+
         rememberCheckBox = findViewById(R.id.remember_checkBox)
         loginBtn = findViewById(R.id.login_btn)
         passwordEdt = findViewById(R.id.password_edt)
