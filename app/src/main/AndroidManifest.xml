@@ -15,14 +15,17 @@
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
-        android:largeHeap="true"
-        android:persistent="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:largeHeap="true"
+        android:persistent="true"
         android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppThemeNo"
         tools:targetApi="31">
+        <activity
+            android:name=".view.activtiy.MotifyPasswordActivity"
+            android:exported="false" />
         <activity
             android:name=".view.activtiy.ForgetPasswordActivity"
             android:exported="false" />

@@ -14,9 +14,9 @@ class LoginDataType : Serializable {
 
     class LoginDataContent : Serializable{
         @SerializedName("session")
-        val session: String? = ""
+        val session: String? = null
         @SerializedName("expired_time")
-        val expired_time: String? = ""
+        val expired_time: String? = null
     }
 
 }

@@ -1,7 +1,6 @@
 package com.jwiseinc.onedayticket.view.activtiy
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.*
@@ -9,13 +8,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.jwiseinc.onedayticket.R
 import com.jwiseinc.onedayticket.utils.MD5Util
+import com.jwiseinc.onedayticket.utils.XClickUtil
 import com.jwiseinc.onedayticket.viewmodel.LoginViewModel
 import com.sray.pigeonmap.model.factory.LoginViewModelFactory
 import com.sray.pigeonmap.model.repository.LoginRepository
 import com.sray.pigeonmap.utils.ExampleUtil
 import com.sray.pigeonmap.utils.SharedPreferencesUtil
 
-class LoginActivity : AppCompatActivity() {
+class LoginActivity : BaseActivity() {
 
     lateinit var viewModel: LoginViewModel
     lateinit var loginBtn:Button
@@ -25,10 +25,12 @@ class LoginActivity : AppCompatActivity() {
     lateinit var forgetPasswordBtn:TextView
     lateinit var rememberCheckBox:CheckBox
 
+    override fun setLayoutViewId(): Int {
+        return R.layout.activity_login
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_login)
-
 
         rememberCheckBox = findViewById(R.id.remember_checkBox)
         loginBtn = findViewById(R.id.login_btn)
@@ -59,22 +61,49 @@ class LoginActivity : AppCompatActivity() {
         }
 
         loginBtn.setOnClickListener{
-            if(passwordEdt.text.toString() != null && passwordEdt.text.toString() != "" && memberIDEdt.text.toString() != null && memberIDEdt.text.toString() != ""){
-                viewModel.login(memberIDEdt.text.toString(), MD5Util.md5(memberIDEdt.text.toString()+passwordEdt.text.toString()))
-                    .observe(this, Observer {
-                        if(it.sysCode!! >= 0){
-                            val it = Intent(this, MainActivity::class.java)
-                            startActivity(it)
-                        }else{
-
+            if(!XClickUtil.isFastDoubleClick(loginBtn)){
+                if (passwordEdt.text.toString() != null && passwordEdt.text.toString() != "" && memberIDEdt.text.toString() != null && memberIDEdt.text.toString() != "") {
+                    loadingView.show()
+                    viewModel.login(
+                        memberIDEdt.text.toString(),
+                        MD5Util.md5(memberIDEdt.text.toString() + passwordEdt.text.toString())
+                    ).observe(this, Observer {
+                        loadingView.hide()
+                        if (it!!.sysCode!! >= 0) {
+                            Log.d("aaaaaaaa","iiiiidddbbbb")
+                            val intent = Intent(this, MainActivity::class.java)
+                            startActivity(intent)
+                        } else {
+                            when (it!!.sysCode!!) {
+                                Log.d("aaaaaaaa","gggggg")
+                                        -1 -> Toast.makeText(this, "帳號不存在", Toast.LENGTH_SHORT).show()
+                                -2 -> Toast.makeText(this, "帳號密碼不正確", Toast.LENGTH_SHORT).show()
+                                -3 -> Toast.makeText(this, "帳號未啟用", Toast.LENGTH_SHORT).show()
+                                -4 -> Toast.makeText(this, "帳號被系統管理者鎖定", Toast.LENGTH_SHORT)
+                                    .show()
+                                -5 -> Toast.makeText(this, "找不到對應的會員資料", Toast.LENGTH_SHORT)
+                                    .show()
+                                -6 -> Toast.makeText(this, "會員未啟用", Toast.LENGTH_SHORT).show()
+                                -7 -> Toast.makeText(this, "會員已被系統管理者鎖定", Toast.LENGTH_SHORT)
+                                    .show()
+                                else -> Log.d("aaaa", "")
+                            }
+                        }
+                        if(it != null){
+                            viewModel.loginData.removeObservers(this)
                         }
                     })
-                SharedPreferencesUtil.setKeyValue("memberID",memberIDEdt.text.toString(),this)
-                if(rememberCheckBox.isChecked){
-                    SharedPreferencesUtil.setKeyValue("password",passwordEdt.text.toString(),this)
+                    SharedPreferencesUtil.setKeyValue("memberID", memberIDEdt.text.toString(), this)
+                    if (rememberCheckBox.isChecked) {
+                        SharedPreferencesUtil.setKeyValue(
+                            "password",
+                            passwordEdt.text.toString(),
+                            this
+                        )
+                    }
+                } else {
+                    Toast.makeText(this, "輸入框不得為空", Toast.LENGTH_SHORT).show()
                 }
-            }else{
-                Toast.makeText(this,"輸入框不得為空",Toast.LENGTH_SHORT).show()
             }
         }
 

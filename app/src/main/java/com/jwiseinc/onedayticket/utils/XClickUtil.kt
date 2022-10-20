@@ -1,4 +1,4 @@
-package com.sray.pigeonmap.utils
+package com.jwiseinc.onedayticket.utils
 
 import android.view.View
 

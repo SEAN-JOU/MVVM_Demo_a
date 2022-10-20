@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="#ffffff"
-android:focusableInTouchMode="true"
-tools:context=".view.activtiy.LoginActivity">
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="#ffffff"
+    android:focusableInTouchMode="true"
+    android:foregroundGravity="center"
+    app:layout_anchorGravity="center"
+    tools:context=".view.activtiy.LoginActivity">
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical"
         android:paddingLeft="30dp"
@@ -168,21 +172,42 @@ tools:context=".view.activtiy.LoginActivity">
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/privacy"
-        android:layout_marginBottom="0dp"
-        android:gravity="bottom|center_horizontal"
+        android:layout_gravity="bottom"
+        android:foregroundGravity="bottom"
+        android:gravity="center"
         android:textColor="@color/gray_2"
-        android:textSize="13dp" />
+        android:textSize="13dp"
+        app:layout_constraintBottom_toTopOf="@+id/privacy"
+        tools:layout_editor_absoluteX="30dp" />
 
     <TextView
         android:id="@+id/privacy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="20dp"
-        android:gravity="bottom|center_horizontal"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="10dp"
+        android:foregroundGravity="bottom"
+        android:gravity="center"
         android:padding="0dp"
         android:text="@string/copyright"
         android:textColor="@color/gray_2"
-        android:textSize="13dp" />
+        android:textSize="13dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="30dp" />
 
-</RelativeLayout>
+
+    <com.jwiseinc.onedayticket.loadingview.AVLoadingIndicatorView
+        android:id="@+id/loadingView"
+        app:indicatorName="LineSpinFadeLoaderIndicator"
+        app:indicatorColor="@color/gray_2"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/linearLayout"
+        app:layout_constraintTop_toTopOf="@+id/linearLayout" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,9 +12,7 @@ class ForgetPasswordDataType {
     var data: ForgetPasswordDataContent? = null
 
     class ForgetPasswordDataContent : Serializable {
-        @SerializedName("session")
-        val session: String? = ""
-        @SerializedName("expired_time")
-        val expired_time: String? = ""
+        @SerializedName("authcode")
+        val authcode: String? = null
     }
 }
