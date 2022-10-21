@@ -70,7 +70,6 @@ class LoginActivity : BaseActivity() {
                     ).observe(this, Observer {
                         loadingView.hide()
                         if (it!!.sysCode!! >= 0) {
-                            Log.d("aaaaaaaa","iiiiidddbbbb")
                             val intent = Intent(this, MainActivity::class.java)
                             startActivity(intent)
                         } else {
@@ -86,7 +85,8 @@ class LoginActivity : BaseActivity() {
                                 -6 -> Toast.makeText(this, "會員未啟用", Toast.LENGTH_SHORT).show()
                                 -7 -> Toast.makeText(this, "會員已被系統管理者鎖定", Toast.LENGTH_SHORT)
                                     .show()
-                                else -> Log.d("aaaa", "")
+                                else -> Toast.makeText(this, "發生不明錯誤", Toast.LENGTH_SHORT)
+                                    .show()
                             }
                         }
                         if(it != null){

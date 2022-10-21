@@ -10,6 +10,7 @@ import com.jwiseinc.onedayticket.OnCallBack
 import com.jwiseinc.onedayticket.SingleLiveData
 import com.jwiseinc.onedayticket.model.data.ForgetPasswordDataType
 import com.jwiseinc.onedayticket.model.repository.ForgetPasswordRepository
+import com.jwiseinc.onedayticket.view.activtiy.BaseActivity
 
 
 class ForgetPasswordViewModel (private val repository: ForgetPasswordRepository) : ViewModel() {
@@ -23,10 +24,11 @@ class ForgetPasswordViewModel (private val repository: ForgetPasswordRepository)
                     val jsonData = Gson().fromJson<ForgetPasswordDataType>(data, object : TypeToken<ForgetPasswordDataType>() {}.type)
                     forgetPasswordData.postValue(jsonData)
                 }catch (e:Exception){
+                    BaseActivity.loadingView.hide()
                 }
             }
             override fun onError(data: String) {
-
+                BaseActivity.loadingView.hide()
             }
         })
         return forgetPasswordData

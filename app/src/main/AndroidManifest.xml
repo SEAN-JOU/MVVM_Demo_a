@@ -30,12 +30,12 @@
             android:name=".view.activtiy.ForgetPasswordActivity"
             android:exported="false" />
         <activity
-            android:name=".view.activtiy.ScannerActivity"
+            android:name=".view.activtiy.LoginActivity"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".view.activtiy.LoginActivity"
+            android:name=".view.activtiy.ScannerActivity"
             android:exported="false"
             android:launchMode="singleTop"
             android:screenOrientation="portrait" />

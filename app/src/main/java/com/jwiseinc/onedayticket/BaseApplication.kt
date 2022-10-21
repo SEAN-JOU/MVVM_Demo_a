@@ -16,7 +16,4 @@ class BaseApplication : Application() {
             return instance!!.applicationContext
         }
     }
-
-
-
 }

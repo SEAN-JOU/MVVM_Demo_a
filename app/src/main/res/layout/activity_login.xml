@@ -197,7 +197,7 @@
         tools:layout_editor_absoluteX="30dp" />
 
 
-    <com.jwiseinc.onedayticket.loadingview.AVLoadingIndicatorView
+    <com.jwiseinc.onedayticket.element.AVLoadingIndicatorView
         android:id="@+id/loadingView"
         app:indicatorName="LineSpinFadeLoaderIndicator"
         app:indicatorColor="@color/gray_2"
