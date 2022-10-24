@@ -7,6 +7,8 @@
     <string name="copyright">版權所有 © Jwiseinc 2022</string>
     <string name="remember_password">記住密碼</string>
     <string name="login_title">台灣好行套票 \n 管理平台</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

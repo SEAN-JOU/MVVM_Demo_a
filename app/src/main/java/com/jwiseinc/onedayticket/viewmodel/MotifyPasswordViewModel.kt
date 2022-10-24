@@ -18,7 +18,6 @@ class MotifyPasswordViewModel (private val repository: MotifyPasswordRepository)
     fun resetPassword(authcode:String,newPassword:String,randNumber:String): SingleLiveData<MotifyPasswordDataType> {
         repository.resetPassword(authcode,newPassword,randNumber,object : OnCallBack {
             override fun onFinish(data: String) {
-                Log.d("aaaaaaaa",data)
                 try {
                     val jsonData = Gson().fromJson<MotifyPasswordDataType>(data, object : TypeToken<MotifyPasswordDataType>() {}.type)
                     motifyPasswordDataType.postValue(jsonData)

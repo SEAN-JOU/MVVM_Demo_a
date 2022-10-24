@@ -8,16 +8,17 @@
     android:fitsSystemWindows="false"
     tools:context=".view.activtiy.MainActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
+    <ImageView
         android:id="@+id/qrcodeBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="-70dp"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginEnd="20dp"
         android:layout_marginBottom="90dp"
         android:clickable="true"
         ads:srcCompat="@drawable/qrcode"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toRightOf="parent" />
 
     <LinearLayout
@@ -77,9 +78,7 @@
                 ads:tabPaddingStart="0dp"
                 ads:tabPaddingTop="0dp"
                 app:layout_scrollFlags="scroll|enterAlways"
-                app:tabBackground="@color/white"
-                app:tabIndicatorHeight="2dp"
-                app:tabTextColor="@android:color/white" /><!--"?attr/colorPrimary"-->
+                app:tabBackground="@color/white" /><!--"?attr/colorPrimary"-->
 
         </com.google.android.material.appbar.AppBarLayout>
 

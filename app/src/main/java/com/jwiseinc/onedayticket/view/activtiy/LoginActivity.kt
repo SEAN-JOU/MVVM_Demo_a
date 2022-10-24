@@ -74,7 +74,6 @@ class LoginActivity : BaseActivity() {
                             startActivity(intent)
                         } else {
                             when (it!!.sysCode!!) {
-                                Log.d("aaaaaaaa","gggggg")
                                         -1 -> Toast.makeText(this, "帳號不存在", Toast.LENGTH_SHORT).show()
                                 -2 -> Toast.makeText(this, "帳號密碼不正確", Toast.LENGTH_SHORT).show()
                                 -3 -> Toast.makeText(this, "帳號未啟用", Toast.LENGTH_SHORT).show()

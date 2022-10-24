@@ -18,7 +18,6 @@ class LoginViewModel (private val repository: LoginRepository) : ViewModel() {
     fun login(memberID:String,password:String): SingleLiveData<LoginDataType> {
         repository.login(memberID,password,object : OnCallBack {
             override fun onFinish(data: String) {
-                Log.d("aaaaaaaa",data)
                 try {
                     val jsonData = Gson().fromJson<LoginDataType>(data, object : TypeToken<LoginDataType>() {}.type)
                     loginData.postValue(jsonData)

@@ -7,13 +7,18 @@
         <entry key="app/src/main/res/drawable/edit_shape.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/linear_stroke_gray.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/login_shape.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/select_color.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/tickets_image.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/writeoff_image.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_forget_password.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.165" />
         <entry key="app/src/main/res/layout/activity_motify_password.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/activity_scanner.xml" value="0.10869565217391304" />
+        <entry key="app/src/main/res/layout/activity_scanner.xml" value="0.18686868686868688" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.21557971014492755" />
-        <entry key="app/src/main/res/layout/custom_tab.xml" value="0.14221014492753623" />
+        <entry key="app/src/main/res/layout/custom_tab.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_package_info.xml" value="0.14583333333333334" />
+        <entry key="app/src/main/res/layout/fragment_write_off_record.xml" value="0.14583333333333334" />
         <entry key="app/src/main/res/layout/linear_stroke_gray.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1" />
       </map>
