@@ -5,9 +5,7 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import android.view.View
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
+import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -26,12 +24,18 @@ class ScannerActivity : AppCompatActivity() {
     private lateinit var barcodeDetector: BarcodeDetector
     private var scannedValue = ""
     lateinit var cameraSurfaceView: SurfaceView
+    lateinit var backBtn:ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
 
+        backBtn = findViewById(R.id.backBtn)
         cameraSurfaceView = findViewById(R.id.cameraSurfaceView)
+
+        backBtn.setOnClickListener {
+            finish()
+        }
 
         if (ContextCompat.checkSelfPermission(
                 this@ScannerActivity, android.Manifest.permission.CAMERA
@@ -95,7 +99,7 @@ class ScannerActivity : AppCompatActivity() {
                 if (barcodes.size() == 1) {
                     scannedValue = barcodes.valueAt(0).rawValue
                     runOnUiThread {
-                        cameraSource.stop()
+//                        cameraSource.stop()
                         Toast.makeText(this@ScannerActivity, "$scannedValue", Toast.LENGTH_SHORT).show()
 //                        finish()
                     }

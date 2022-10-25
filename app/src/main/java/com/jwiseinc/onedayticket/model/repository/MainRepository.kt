@@ -6,17 +6,17 @@ import com.jwiseinc.onedayticket.OnCallBack
 import okhttp3.*
 import java.io.IOException
 
-class ForgetPasswordRepository {
+class MainRepository {
 
-    fun forget(memberID:String,email:String,task: OnCallBack) {
+    fun getData(memberID:String,session:String,task: OnCallBack) {
         
         val builder = FormBody.Builder()
         builder.add("memberID",  memberID)
-        builder.add("email",  email)
+        builder.add("session",  session)
 
         val request = Request.Builder()
             .method("POST", builder.build())
-            .url(ApiManager.SERVER_USERS + "/merchant/forget.php")
+            .url(ApiManager.SERVER_USERS + "/merchant/getdata.php")
             .build()
         client.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
@@ -28,5 +28,4 @@ class ForgetPasswordRepository {
             }
         })
     }
-
 }

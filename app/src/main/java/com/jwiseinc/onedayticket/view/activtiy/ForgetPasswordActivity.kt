@@ -44,12 +44,16 @@ class ForgetPasswordActivity : BaseActivity() {
                 if (emailEdt.text != null && emailEdt.text.toString() != "" &&
                     memberIDEdt.text != null && memberIDEdt.text.toString() != ""
                 ) {
-                    loadingView.show()
+                    runOnUiThread {
+                        loadingView.show()
+                    }
                     SharedPreferencesUtil.setKeyValue("memberID", memberIDEdt.text.toString(), this)
                     viewModel.forget(memberIDEdt.text.toString(), emailEdt.text.toString())
                         .observe(this,
                             {
-                                loadingView.hide()
+                                runOnUiThread {
+                                    loadingView.hide()
+                                }
                                 if (it!!.sysCode!! >= 0) {
                                     SharedPreferencesUtil.setKeyValue("memberID", memberIDEdt.text.toString(), this)
                                     val intent = Intent(this, MotifyPasswordActivity::class.java)

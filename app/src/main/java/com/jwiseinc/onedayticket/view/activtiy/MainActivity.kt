@@ -12,16 +12,22 @@ import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.jwiseinc.onedayticket.R
 import com.jwiseinc.onedayticket.element.NoSlideViewPager
+import com.jwiseinc.onedayticket.model.factory.MainViewModelFactory
+import com.jwiseinc.onedayticket.model.repository.MainRepository
 import com.jwiseinc.onedayticket.view.adapter.MainAdapter
 import com.jwiseinc.onedayticket.view.fragment.PackageInfoFragment
 import com.jwiseinc.onedayticket.view.fragment.WriteOffRecordFragment
+import com.jwiseinc.onedayticket.viewmodel.LoginViewModel
+import com.jwiseinc.onedayticket.viewmodel.MainViewModel
+import com.sray.pigeonmap.model.factory.LoginViewModelFactory
+import com.sray.pigeonmap.model.repository.LoginRepository
+import com.sray.pigeonmap.utils.SharedPreferencesUtil
 
-//https://givemepass.blogspot.com/2019/04/tablayout-viewpager.html
-//https://www.javatpoint.com/kotlin-android-tablayout-with-viewpager
 
 class MainActivity : BaseActivity() {
 
@@ -31,6 +37,7 @@ class MainActivity : BaseActivity() {
     lateinit var adapter: MainAdapter
     lateinit var text1:TextView
     lateinit var text2:TextView
+    lateinit var viewModel: MainViewModel
     private val sOffScreenLimit = 1
 
     override fun setLayoutViewId(): Int {
@@ -43,7 +50,6 @@ class MainActivity : BaseActivity() {
         qrcodeBtn = findViewById(R.id.qrcodeBtn)
         mTabLayout = findViewById(R.id.tablayout)
         mViewPager = findViewById(R.id.viewpager)
-        loadingView.show()
 
         val fragmentList = ArrayList<Fragment>()
         fragmentList.add(PackageInfoFragment())
@@ -53,6 +59,15 @@ class MainActivity : BaseActivity() {
         for (i in 0..4) {
             titleList.add("Page_$i")
         }
+
+        viewModel = ViewModelProvider(this, MainViewModelFactory(MainRepository())).get(
+            MainViewModel::class.java
+        )
+
+        viewModel.getData(SharedPreferencesUtil.getKeyValue("memberID",this),SharedPreferencesUtil.getKeyValue("session",this))
+            .observe(this,{
+
+            })
 
         adapter = MainAdapter(supportFragmentManager, fragmentList)
         mViewPager.setAdapter(adapter)

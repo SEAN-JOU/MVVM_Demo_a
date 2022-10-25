@@ -1,6 +1,7 @@
 package com.jwiseinc.onedayticket.model.repository
 
 import com.jwiseinc.onedayticket.ApiManager
+import com.jwiseinc.onedayticket.ApiManager.Companion.client
 import com.jwiseinc.onedayticket.BaseApplication.Companion.applicationContext
 import com.jwiseinc.onedayticket.OnCallBack
 import com.jwiseinc.onedayticket.utils.MD5Util
@@ -11,7 +12,6 @@ import java.io.IOException
 class MotifyPasswordRepository {
 
     fun resetPassword(authcode:String,newPassword:String,randNumber:String,task: OnCallBack) {
-        val client = OkHttpClient()
         val builder = FormBody.Builder()
         builder.add("authcode",  authcode)
         builder.add("rand_num",  randNumber)
