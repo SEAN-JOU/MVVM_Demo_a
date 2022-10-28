@@ -1,5 +1,6 @@
 package com.jwiseinc.onedayticket
 
+import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
 
@@ -20,5 +21,6 @@ class ExampleInstrumentedTest {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
         assertEquals("com.jwiseinc.onedayticket", appContext.packageName)
+        Log.d("aaaaaa","e04")
     }
 }

@@ -2,6 +2,7 @@ package com.jwiseinc.onedayticket.view.activtiy
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Bitmap
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -24,6 +25,9 @@ import com.jwiseinc.onedayticket.view.fragment.PackageInfoFragment
 import com.jwiseinc.onedayticket.view.fragment.WriteOffRecordFragment
 import com.jwiseinc.onedayticket.viewmodel.LoginViewModel
 import com.jwiseinc.onedayticket.viewmodel.MainViewModel
+import com.squareup.picasso.MemoryPolicy
+import com.squareup.picasso.NetworkPolicy
+import com.squareup.picasso.Picasso
 import com.sray.pigeonmap.model.factory.LoginViewModelFactory
 import com.sray.pigeonmap.model.repository.LoginRepository
 import com.sray.pigeonmap.utils.SharedPreferencesUtil
@@ -35,8 +39,11 @@ class MainActivity : BaseActivity() {
     lateinit var mViewPager:NoSlideViewPager
     lateinit var qrcodeBtn:ImageView
     lateinit var adapter: MainAdapter
+    lateinit var titleView:TextView
     lateinit var text1:TextView
     lateinit var text2:TextView
+    lateinit var logoView:ImageView
+
     lateinit var viewModel: MainViewModel
     private val sOffScreenLimit = 1
 
@@ -50,6 +57,8 @@ class MainActivity : BaseActivity() {
         qrcodeBtn = findViewById(R.id.qrcodeBtn)
         mTabLayout = findViewById(R.id.tablayout)
         mViewPager = findViewById(R.id.viewpager)
+        titleView = findViewById(R.id.title)
+        logoView = findViewById(R.id.logoView)
 
         val fragmentList = ArrayList<Fragment>()
         fragmentList.add(PackageInfoFragment())
@@ -66,9 +75,14 @@ class MainActivity : BaseActivity() {
 
         viewModel.getData(SharedPreferencesUtil.getKeyValue("memberID",this),SharedPreferencesUtil.getKeyValue("session",this))
             .observe(this,{
-
+                titleView.text = it?.data?.member_name?.zh_TW
+                Picasso.with(this).load(it?.data?.logo_url)
+                    .noPlaceholder()
+                    .memoryPolicy(MemoryPolicy.NO_CACHE)
+                    .networkPolicy(NetworkPolicy.NO_CACHE)
+                    .config(Bitmap.Config.RGB_565)
+                    .into(logoView)
             })
-
         adapter = MainAdapter(supportFragmentManager, fragmentList)
         mViewPager.setAdapter(adapter)
         mTabLayout.setupWithViewPager(mViewPager)
@@ -84,15 +98,15 @@ class MainActivity : BaseActivity() {
         text2 = linearLayout2.findViewById<View>(R.id.text2) as TextView
 
         text1.setTextColor(getColor(R.color.colorAccent))
-        mTabLayout.getTabAt(0)!!.customView = linearLayout1
-        mTabLayout.getTabAt(1)!!.customView = linearLayout2
+        mTabLayout.getTabAt(0)?.customView = linearLayout1
+        mTabLayout.getTabAt(1)?.customView = linearLayout2
 
         mTabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             @RequiresApi(Build.VERSION_CODES.M)
             override fun onTabSelected(tab: TabLayout.Tab?) {
-                    if (tab!!.position.toString() == "0") {
+                    if (tab?.position.toString() == "0") {
                         text1.setTextColor(getColor(R.color.colorAccent))
-                    } else if (tab!!.position.toString() == "1") {
+                    } else if (tab?.position.toString() == "1") {
                         text2.setTextColor(getColor(R.color.colorAccent))
                     }
             }

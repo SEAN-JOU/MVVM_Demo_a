@@ -6,6 +6,19 @@ android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".view.activtiy.ScannerActivity">
 
+    <Button
+        android:id="@+id/login_btn2"
+        android:layout_width="180dp"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/login_shape"
+        android:text="手動輸入核銷碼"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="match_parent"

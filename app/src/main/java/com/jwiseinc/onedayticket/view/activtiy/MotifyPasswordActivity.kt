@@ -33,8 +33,8 @@ class MotifyPasswordActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        if (intent.extras!!.getString("authcode") != null) {
-            authcode = intent.extras!!.getString("authcode")!!
+        if (intent.extras?.getString("authcode") != null) {
+            authcode = intent.extras?.getString("authcode")!!
         }
         backBtn = findViewById(R.id.backBtn)
         randNumberEdt = findViewById(R.id.randNumber_edt)

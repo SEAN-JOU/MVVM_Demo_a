@@ -85,6 +85,7 @@ class LoginActivity : BaseActivity() {
                         ).observe(this, Observer {
                             loadingView.hide()
                             if (it!!.sysCode!! >= 0) {
+                                SharedPreferencesUtil.setKeyValue("session",it!!.data!!.session_id!!,this)
                                 val intent = Intent(this, MainActivity::class.java)
                                 startActivity(intent)
                             } else {
@@ -123,16 +124,16 @@ class LoginActivity : BaseActivity() {
             if (it!!.sysCode!! >= 0) {
                 if(ExampleUtil.compareVersion(
                         ExampleUtil.getLocalVersionName(this)!!,
-                        it.data!!.android_version!!
+                        it!!.data!!.android_version!!
                     )!!){
-                        if(it.data!!.android_need_update!!){
+                        if(it!!.data!!.android_need_update!!){
                             AlertDialog.Builder(this)
                                 .setIcon(R.drawable.logo)
                                 .setMessage("前往Google Play更新Oride套票管理平台")
                                 .setTitle("版本更新")
                                 .setPositiveButton("更新",  {
                                         dialog, id ->  val googleplay = Intent(Intent.ACTION_VIEW)
-                                    googleplay.data = Uri.parse(it.data!!.android_app_path)
+                                    googleplay.data = Uri.parse(it.data?.android_app_path)
                                     startActivity(googleplay)
                                 })
                                 .show()
@@ -144,7 +145,7 @@ class LoginActivity : BaseActivity() {
                                 .setPositiveButton("更新",  {
                                         dialog, id ->
                                     val googleplay = Intent(Intent.ACTION_VIEW)
-                                    googleplay.data = Uri.parse(it.data!!.android_app_path)
+                                    googleplay.data = Uri.parse(it.data?.android_app_path)
                                     startActivity(googleplay)
                                 })
                                 .setNegativeButton("取消",{

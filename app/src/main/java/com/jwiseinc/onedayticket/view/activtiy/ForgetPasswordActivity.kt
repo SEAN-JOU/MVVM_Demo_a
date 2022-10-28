@@ -57,7 +57,7 @@ class ForgetPasswordActivity : BaseActivity() {
                                 if (it!!.sysCode!! >= 0) {
                                     SharedPreferencesUtil.setKeyValue("memberID", memberIDEdt.text.toString(), this)
                                     val intent = Intent(this, MotifyPasswordActivity::class.java)
-                                    intent.putExtra("authcode", it.data!!.authcode);
+                                    intent.putExtra("authcode", it.data?.authcode);
                                     startActivity(intent)
                                 } else {
                                     when (it!!.sysCode!!) {

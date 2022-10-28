@@ -21,6 +21,7 @@ class MainViewModel (private val repository: MainRepository) : ViewModel() {
                     val jsonData = Gson().fromJson<MainDataType>(data, object : TypeToken<MainDataType>() {}.type)
                     mainData.postValue(jsonData)
                 }catch (e:Exception){
+
                 }
             }
             override fun onError(data: String) {
