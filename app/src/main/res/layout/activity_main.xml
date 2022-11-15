@@ -43,14 +43,14 @@
                 android:paddingLeft="20dp"
                 android:paddingRight="20dp">
 
-                <ImageView
+                <com.jwiseinc.onedayticket.element.CircleImageView
                     android:id="@+id/logoView"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
-                    android:padding="5dp"
-                    android:scaleType="fitXY"
-                    app:tint="@color/white" />
-
+                    android:layout_alignParentTop="true"
+                    android:gravity="center"
+                    android:padding="7dp"
+                    android:textColor="#ffffff" />
 
                 <View
                     android:id="@+id/view2"

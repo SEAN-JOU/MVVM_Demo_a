@@ -2,11 +2,14 @@ package com.jwiseinc.onedayticket.view.activtiy
 
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.widget.ImageView
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -14,7 +17,9 @@ import com.google.android.gms.vision.CameraSource
 import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
+import com.jwiseinc.onedayticket.ExampleUtil
 import com.jwiseinc.onedayticket.R
+import okio.ByteString.Companion.decodeHex
 import java.io.IOException
 
 
@@ -94,13 +99,14 @@ class ScannerActivity : AppCompatActivity() {
                     .show()
             }
 
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun receiveDetections(detections: Detector.Detections<Barcode>) {
                 val barcodes = detections.detectedItems
                 if (barcodes.size() == 1) {
                     scannedValue = barcodes.valueAt(0).rawValue
                     runOnUiThread {
 //                        cameraSource.stop()
-                        Toast.makeText(this@ScannerActivity, "$scannedValue", Toast.LENGTH_SHORT).show()
+                        Log.d("aaaaaaaa", ExampleUtil.encodeBase64Hex("$scannedValue"!!))
 //                        finish()
                     }
                 }else

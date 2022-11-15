@@ -1,4 +1,4 @@
-package com.sray.pigeonmap.model.repository
+package com.jwiseinc.onedayticket.model.repository
 
 
 import com.jwiseinc.onedayticket.ApiManager

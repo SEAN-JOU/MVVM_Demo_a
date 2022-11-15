@@ -15,17 +15,18 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:src="@drawable/tickets_image" />
 
         <TextView
             android:id="@+id/text1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="套票資訊"
             android:textColor="@color/gray_3"
-            android:textSize="14sp"/>
+            android:textSize="12dp" />
 
     </LinearLayout>
 
@@ -39,18 +40,18 @@
 
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="35dp"
             android:src="@drawable/writeoff_image" />
 
         <TextView
             android:id="@+id/text2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="核銷紀錄"
             android:textColor="@color/gray_3"
-            android:textSize="14sp"
-            />
+            android:textSize="12dp" />
 
     </LinearLayout>
 

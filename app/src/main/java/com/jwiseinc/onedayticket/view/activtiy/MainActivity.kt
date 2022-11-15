@@ -17,19 +17,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import com.jwiseinc.onedayticket.R
+import com.jwiseinc.onedayticket.element.CircleImageView
 import com.jwiseinc.onedayticket.element.NoSlideViewPager
 import com.jwiseinc.onedayticket.model.factory.MainViewModelFactory
 import com.jwiseinc.onedayticket.model.repository.MainRepository
 import com.jwiseinc.onedayticket.view.adapter.MainAdapter
 import com.jwiseinc.onedayticket.view.fragment.PackageInfoFragment
 import com.jwiseinc.onedayticket.view.fragment.WriteOffRecordFragment
-import com.jwiseinc.onedayticket.viewmodel.LoginViewModel
 import com.jwiseinc.onedayticket.viewmodel.MainViewModel
 import com.squareup.picasso.MemoryPolicy
 import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
-import com.sray.pigeonmap.model.factory.LoginViewModelFactory
-import com.sray.pigeonmap.model.repository.LoginRepository
+import com.jwiseinc.onedayticket.model.repository.LoginRepository
 import com.sray.pigeonmap.utils.SharedPreferencesUtil
 
 
@@ -42,8 +41,7 @@ class MainActivity : BaseActivity() {
     lateinit var titleView:TextView
     lateinit var text1:TextView
     lateinit var text2:TextView
-    lateinit var logoView:ImageView
-
+    lateinit var logoView: CircleImageView
     lateinit var viewModel: MainViewModel
     private val sOffScreenLimit = 1
 
@@ -96,7 +94,6 @@ class MainActivity : BaseActivity() {
         val linearLayout2 = headerView.findViewById<View>(R.id.ll2) as LinearLayout
         text1 = linearLayout1.findViewById<View>(R.id.text1) as TextView
         text2 = linearLayout2.findViewById<View>(R.id.text2) as TextView
-
         text1.setTextColor(getColor(R.color.colorAccent))
         mTabLayout.getTabAt(0)?.customView = linearLayout1
         mTabLayout.getTabAt(1)?.customView = linearLayout2

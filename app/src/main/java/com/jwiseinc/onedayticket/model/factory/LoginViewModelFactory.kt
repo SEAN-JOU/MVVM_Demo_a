@@ -3,7 +3,7 @@ package com.sray.pigeonmap.model.factory
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.jwiseinc.onedayticket.viewmodel.LoginViewModel
-import com.sray.pigeonmap.model.repository.LoginRepository
+import com.jwiseinc.onedayticket.model.repository.LoginRepository
 
 class LoginViewModelFactory constructor(private val repository: LoginRepository) :
     ViewModelProvider.Factory {

@@ -1,7 +1,10 @@
 package com.jwiseinc.onedayticket
 
+import android.util.Log
+import androidx.test.core.app.ApplicationProvider
+import com.jwiseinc.onedayticket.viewmodel.LoginViewModel
+import com.sray.pigeonmap.model.repository.LoginRepository
 import org.junit.Test
-
 import org.junit.Assert.*
 
 /**

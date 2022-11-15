@@ -1,14 +1,31 @@
-package com.sray.pigeonmap.utils
+package com.jwiseinc.onedayticket
 
 import android.content.Context
 import android.content.pm.PackageManager
-import android.util.Log
+import android.os.Build
+import android.util.Base64.DEFAULT
+import android.util.Base64.encode
+import androidx.annotation.RequiresApi
+import com.google.android.gms.common.util.Base64Utils.encode
+import java.net.URLEncoder.encode
 import java.text.SimpleDateFormat
 import java.util.*
 import java.util.regex.Pattern
 
+
 class ExampleUtil {
     companion object{
+        fun ByteArray.toHexString() : String {
+            return this.joinToString("") {
+                java.lang.String.format(" "+"%02x", it)
+            }
+        }
+        @RequiresApi(Build.VERSION_CODES.O)
+        fun encodeBase64Hex(string:String?): String {
+            val decodedBytes = Base64.getDecoder().decode(string)
+            return  decodedBytes.toHexString()
+        }
+
         fun getLocalVersionName(ctx: Context): String? {
             var localVersion = ""
             try {

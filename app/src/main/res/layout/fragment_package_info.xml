@@ -5,10 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".view.fragment.PackageInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="PackageInfoFragment" />
-
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:text="--"
+        android:textColor="@color/black"
+        android:textSize="24sp" />
 </FrameLayout>

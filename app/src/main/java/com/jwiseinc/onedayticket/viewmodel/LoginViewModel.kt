@@ -8,8 +8,7 @@ import com.jwiseinc.onedayticket.OnCallBack
 import com.jwiseinc.onedayticket.SingleLiveData
 import com.jwiseinc.onedayticket.model.data.LoginDataType
 import com.jwiseinc.onedayticket.model.data.VersionDataType
-import com.jwiseinc.onedayticket.view.activtiy.BaseActivity
-import com.sray.pigeonmap.model.repository.LoginRepository
+import com.jwiseinc.onedayticket.model.repository.LoginRepository
 
 
 class LoginViewModel (private val repository: LoginRepository) : ViewModel() {
@@ -21,14 +20,15 @@ class LoginViewModel (private val repository: LoginRepository) : ViewModel() {
         repository.login(memberID,password,object : OnCallBack {
             override fun onFinish(data: String) {
                 try {
+                    Log.d("test_callback", data)
                     val jsonData = Gson().fromJson<LoginDataType>(data, object : TypeToken<LoginDataType>() {}.type)
                     loginData.postValue(jsonData)
                 }catch (e:Exception){
-                    Log.d("aaaaa", e.message!!)
+                    Log.d("test_callback", e.message!!)
                 }
             }
             override fun onError(data: String) {
-                Log.d("aaaaa", data)
+                Log.d("test_callback", data)
             }
         })
         return loginData
