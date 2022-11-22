@@ -24,6 +24,9 @@
         android:theme="@style/AppThemeNo"
         tools:targetApi="31">
         <activity
+            android:name=".view.activtiy.WriteOffActivity"
+            android:exported="false" />
+        <activity
             android:name=".view.activtiy.MotifyPasswordActivity"
             android:exported="false" />
         <activity

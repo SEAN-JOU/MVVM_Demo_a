@@ -10,7 +10,7 @@ import com.jwiseinc.onedayticket.R
 import com.jwiseinc.onedayticket.model.data.WriteOffRecordDataType
 
 
-class WriteOffRecordAdapter (val writeOffRecordDatas: ArrayList<WriteOffRecordDataType.WriteOffRecordDataContent>, var context: Context, var savedInstanceState: Bundle?) : RecyclerView.Adapter<WriteOffRecordAdapter.ViewHolder>(){
+class WriteOffRecordAdapter (val writeOffRecordDatas: ArrayList<WriteOffRecordDataType.WriteOffRecordDataContent>, var context: Context) : RecyclerView.Adapter<WriteOffRecordAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.writeoffrecord_item, parent, false)
@@ -21,7 +21,6 @@ class WriteOffRecordAdapter (val writeOffRecordDatas: ArrayList<WriteOffRecordDa
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         var writeOffRecordData = writeOffRecordDatas.get(position)
-
     }
 
     class ViewHolder(val view: View) :  RecyclerView.ViewHolder(view) {

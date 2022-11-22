@@ -36,7 +36,7 @@ class MainActivity : BaseActivity() {
 
     lateinit var mTabLayout: TabLayout
     lateinit var mViewPager:NoSlideViewPager
-    lateinit var qrcodeBtn:ImageView
+    lateinit var qrcodeBtn:FloatingActionButton
     lateinit var adapter: MainAdapter
     lateinit var titleView:TextView
     lateinit var text1:TextView
@@ -57,6 +57,11 @@ class MainActivity : BaseActivity() {
         mViewPager = findViewById(R.id.viewpager)
         titleView = findViewById(R.id.title)
         logoView = findViewById(R.id.logoView)
+
+        qrcodeBtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, ScannerActivity::class.java)
+            startActivity(intent)
+        }
 
         val fragmentList = ArrayList<Fragment>()
         fragmentList.add(PackageInfoFragment())
@@ -114,10 +119,5 @@ class MainActivity : BaseActivity() {
                     text1.setTextColor(getColor(R.color.gray_3))
                     text2.setTextColor(getColor(R.color.gray_3))
             }})
-
-        qrcodeBtn.setOnClickListener {
-            val intent = Intent(this@MainActivity, ScannerActivity::class.java)
-            startActivity(intent)
-        }
     }
 }

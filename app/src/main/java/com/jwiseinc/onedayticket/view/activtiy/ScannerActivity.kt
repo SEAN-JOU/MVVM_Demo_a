@@ -1,15 +1,21 @@
 package com.jwiseinc.onedayticket.view.activtiy
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.SurfaceHolder
 import android.view.SurfaceView
+import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -29,17 +35,41 @@ class ScannerActivity : AppCompatActivity() {
     private lateinit var barcodeDetector: BarcodeDetector
     private var scannedValue = ""
     lateinit var cameraSurfaceView: SurfaceView
+    lateinit var inputButton:Button
     lateinit var backBtn:ImageView
 
+    @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scanner)
 
+        inputButton = findViewById(R.id.inputButton)
         backBtn = findViewById(R.id.backBtn)
         cameraSurfaceView = findViewById(R.id.cameraSurfaceView)
 
         backBtn.setOnClickListener {
-            finish()
+            val intent = Intent(this@ScannerActivity, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        inputButton.setOnClickListener {
+            cameraSource.stop()
+            var alertDialog:AlertDialog.Builder = AlertDialog.Builder(this@ScannerActivity)
+                .setTitle("手動輸入核銷碼")
+                .setCancelable(false)
+                .setView(LayoutInflater.from(this@ScannerActivity).inflate(R.layout.input_dialog, null))
+            alertDialog.setPositiveButton("確定") { _, _ ->
+                val editText = LayoutInflater.from(this@ScannerActivity).inflate(R.layout.input_dialog, null).findViewById(R.id.edit_text) as EditText
+                val name = editText.text.toString()
+                if (TextUtils.isEmpty(name)) {
+                    Toast.makeText(applicationContext, "aaa", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(applicationContext, "d" + name, Toast.LENGTH_SHORT).show()
+                }
+            }.setNeutralButton("取消") { _, _ ->
+                cameraSource.start()
+            }
+            alertDialog.show()
         }
 
         if (ContextCompat.checkSelfPermission(
@@ -51,7 +81,6 @@ class ScannerActivity : AppCompatActivity() {
             setupControls()
         }
     }
-
 
     private fun setupControls() {
         barcodeDetector =
@@ -105,9 +134,10 @@ class ScannerActivity : AppCompatActivity() {
                 if (barcodes.size() == 1) {
                     scannedValue = barcodes.valueAt(0).rawValue
                     runOnUiThread {
-//                        cameraSource.stop()
                         Log.d("aaaaaaaa", ExampleUtil.encodeBase64Hex("$scannedValue"!!))
-//                        finish()
+                        val intent = Intent(this@ScannerActivity, WriteOffActivity::class.java)
+                        startActivity(intent)
+                        cameraSource.stop()
                     }
                 }else
                 {
@@ -138,6 +168,11 @@ class ScannerActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "Permission Denied", Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(this@ScannerActivity, MainActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroy() {

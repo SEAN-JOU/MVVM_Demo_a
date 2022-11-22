@@ -8,14 +8,14 @@
     android:fitsSystemWindows="false"
     tools:context=".view.activtiy.MainActivity">
 
-    <ImageView
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/qrcodeBtn"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="80dp"
         android:clickable="true"
-        ads:srcCompat="@drawable/qrcode"
+        android:src="@drawable/qrcode"
         app:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,7 +87,7 @@
             android:id="@+id/viewpager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="6" >
+            android:layout_weight="6">
 
         </com.jwiseinc.onedayticket.element.NoSlideViewPager>
 

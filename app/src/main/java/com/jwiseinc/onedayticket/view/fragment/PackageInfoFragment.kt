@@ -6,9 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.jwiseinc.onedayticket.R
+import com.jwiseinc.onedayticket.viewmodel.MainViewModel
 
 
 class PackageInfoFragment : Fragment() {
+
+    lateinit var viewModel: MainViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
