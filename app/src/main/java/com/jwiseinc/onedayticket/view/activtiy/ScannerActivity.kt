@@ -25,7 +25,6 @@ import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.jwiseinc.onedayticket.ExampleUtil
 import com.jwiseinc.onedayticket.R
-import okio.ByteString.Companion.decodeHex
 import java.io.IOException
 
 
@@ -37,6 +36,7 @@ class ScannerActivity : AppCompatActivity() {
     lateinit var cameraSurfaceView: SurfaceView
     lateinit var inputButton:Button
     lateinit var backBtn:ImageView
+    var isAlertOpen:Boolean = true
 
     @SuppressLint("MissingPermission")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class ScannerActivity : AppCompatActivity() {
         }
 
         inputButton.setOnClickListener {
-            cameraSource.stop()
+            isAlertOpen = false
             var alertDialog:AlertDialog.Builder = AlertDialog.Builder(this@ScannerActivity)
                 .setTitle("手動輸入核銷碼")
                 .setCancelable(false)
@@ -63,11 +63,12 @@ class ScannerActivity : AppCompatActivity() {
                 val name = editText.text.toString()
                 if (TextUtils.isEmpty(name)) {
                     Toast.makeText(applicationContext, "aaa", Toast.LENGTH_SHORT).show()
+                    isAlertOpen = true
                 } else {
                     Toast.makeText(applicationContext, "d" + name, Toast.LENGTH_SHORT).show()
                 }
             }.setNeutralButton("取消") { _, _ ->
-                cameraSource.start()
+                isAlertOpen = true
             }
             alertDialog.show()
         }
@@ -121,13 +122,11 @@ class ScannerActivity : AppCompatActivity() {
             }
         })
 
-
         barcodeDetector.setProcessor(object : Detector.Processor<Barcode> {
             override fun release() {
                 Toast.makeText(applicationContext, "Scanner has been closed", Toast.LENGTH_SHORT)
                     .show()
             }
-
             @RequiresApi(Build.VERSION_CODES.O)
             override fun receiveDetections(detections: Detector.Detections<Barcode>) {
                 val barcodes = detections.detectedItems
@@ -135,9 +134,11 @@ class ScannerActivity : AppCompatActivity() {
                     scannedValue = barcodes.valueAt(0).rawValue
                     runOnUiThread {
                         Log.d("aaaaaaaa", ExampleUtil.encodeBase64Hex("$scannedValue"!!))
-                        val intent = Intent(this@ScannerActivity, WriteOffActivity::class.java)
-                        startActivity(intent)
-                        cameraSource.stop()
+                        if(isAlertOpen){
+                            val intent = Intent(this@ScannerActivity, WriteOffActivity::class.java)
+                            startActivity(intent)
+                            cameraSource.stop()
+                        }
                     }
                 }else
                 {

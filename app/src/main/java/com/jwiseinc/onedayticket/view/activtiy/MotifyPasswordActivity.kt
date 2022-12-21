@@ -40,8 +40,8 @@ class MotifyPasswordActivity : BaseActivity() {
         randNumberEdt = findViewById(R.id.randNumber_edt)
         newPasswordEdt = findViewById(R.id.newPassword_edt)
         againPasswordEdt = findViewById(R.id.againPassword_edt)
-
         motifyBtn = findViewById(R.id.motifyBtn)
+
         viewModel =
             ViewModelProvider(this, MotifyPasswordViewModelFactory(MotifyPasswordRepository())).get(
                 MotifyPasswordViewModel::class.java

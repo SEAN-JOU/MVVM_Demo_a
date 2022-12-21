@@ -63,7 +63,7 @@ class LoginActivity : BaseActivity() {
         }
 
         loginBtn.setOnClickListener{
-//            Toast.makeText(this,"版本資料檢查中，請稍候。",Toast.LENGTH_SHORT).show()
+//          Toast.makeText(this,"版本資料檢查中，請稍候。",Toast.LENGTH_SHORT).show()
             viewModel.login(
                 memberIDEdt.text.toString(),
                 MD5Util.md5(memberIDEdt.text.toString() + passwordEdt.text.toString())
@@ -179,7 +179,6 @@ class LoginActivity : BaseActivity() {
 //            }else{
 //            }
 //        })
-
         forgetPasswordBtn.setOnClickListener{
             val it = Intent(this, ForgetPasswordActivity::class.java)
             startActivity(it)
